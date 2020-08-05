@@ -84,7 +84,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					if(data.success){
 
 						//跳转到工作台的初始也（欢迎页）
-						window.location.href = "workbench/index.html";
+						window.location.href = "workbench/index.jsp";
 
 					//如果登录失败
 					}else{

@@ -43,7 +43,7 @@ public class TransactionInvocationHandler implements InvocationHandler{
 	}
 	
 	public Object getProxy(){
-
+		String re="重新提交一次";
 		return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),this);
 		
 	}
