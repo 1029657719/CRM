@@ -16,7 +16,6 @@ public class TransactionInvocationHandler implements InvocationHandler{
 		
 	}
 
-
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		
 		SqlSession session = null;
@@ -35,6 +34,7 @@ public class TransactionInvocationHandler implements InvocationHandler{
 			
 			//处理的是什么异常，继续往上抛什么异常
 			throw e.getCause();
+
 		}finally{
 			SqlSessionUtil.myClose(session);
 		}
@@ -43,7 +43,7 @@ public class TransactionInvocationHandler implements InvocationHandler{
 	}
 	
 	public Object getProxy(){
-		String re="重新提交一次";
+		
 		return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),this);
 		
 	}

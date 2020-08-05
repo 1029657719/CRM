@@ -65,4 +65,46 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    public List<User> getUserList() {
+
+        List<User> uList = userDao.getUserList();
+
+        return uList;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

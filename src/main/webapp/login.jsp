@@ -43,8 +43,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				if(event.keyCode==13){
 
 					login();
+
 				}
+
 			})
+
+
 		})
 
 		//普通的自定义的function方法，一定要写在$(function(){})的外面
@@ -65,6 +69,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				//如果账号密码为空，则需要及时强制终止该方法
 				return false;
 
+
 			}
 
 			//去后台验证登录相关操作
@@ -81,6 +86,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				dataType : "json",
 				success : function (data) {
 
+					/*
+
+						data
+							{"success":true/false,"msg":"哪错了"}
+
+					 */
+
+					//如果登录成功
 					if(data.success){
 
 						//跳转到工作台的初始也（欢迎页）

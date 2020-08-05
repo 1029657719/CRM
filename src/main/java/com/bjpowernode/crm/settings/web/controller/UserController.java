@@ -12,19 +12,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.Provider;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Author 北京动力节点
+ */
 public class UserController extends HttpServlet {
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("进入到了用户控制器");
+
+        System.out.println("进入到用户控制器");
+
         String path = request.getServletPath();
-        System.out.println("我操你妈逼");
-        System.out.println(path);
+
         if("/settings/user/login.do".equals(path)){
-            System.out.println("地址匹配。准备等率");
+
             login(request,response);
 
         }else if("/settings/user/xxx.do".equals(path)){
@@ -34,6 +38,7 @@ public class UserController extends HttpServlet {
         }
 
     }
+
     private void login(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("进入到验证登录操作");
@@ -67,8 +72,30 @@ public class UserController extends HttpServlet {
         }catch(Exception e){
             e.printStackTrace();
 
-            String msg = e.getMessage();
+            //一旦程序执行了catch块的信息，说明业务层为我们验证登录失败，为controller抛出了异常
+            //表示登录失败
+            /*
 
+                {"success":true,"msg":?}
+
+             */
+            String msg = e.getMessage();
+            /*
+
+                我们现在作为contoller，需要为ajax请求提供多项信息
+
+                可以有两种手段来处理：
+                    （1）将多项信息打包成为map，将map解析为json串
+                    （2）创建一个Vo
+                            private boolean success;
+                            private String msg;
+
+
+                    如果对于展现的信息将来还会大量的使用，我们创建一个vo类，使用方便
+                    如果对于展现的信息只有在这个需求中能够使用，我们使用map就可以了
+
+
+             */
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("success", false);
             map.put("msg", msg);
@@ -80,3 +107,39 @@ public class UserController extends HttpServlet {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

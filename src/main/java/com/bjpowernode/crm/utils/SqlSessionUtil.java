@@ -23,7 +23,8 @@ public class SqlSessionUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		factory = new SqlSessionFactoryBuilder().build(inputStream);
+		factory =
+		 new SqlSessionFactoryBuilder().build(inputStream);
 		
 	}
 	
